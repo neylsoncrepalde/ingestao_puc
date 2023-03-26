@@ -15,11 +15,11 @@ def extrai_api():
                 file.writelines(response.text)
         return True
 
+
 def json_to_csv():
         with open(json_path, 'r') as file:
                 raw_data = file.readlines()
         json_data = json.loads(raw_data[0])
         df = pd.DataFrame(json_data)[['id', 'nome']]
         df.to_csv(data_path, index=False, encoding='utf-8', sep=';')
-        print(df)
         return True
